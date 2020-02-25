@@ -1,0 +1,23 @@
+entity SRCase {
+	srNumber Long required unique,
+    severity String required maxlength(1),
+	type String required
+}
+
+entity Engineer {
+	engMail String required, 
+	engName String required, 
+    engLastName String required 
+}
+
+entity Schedule {
+    day String required,
+    startTime Instant required,
+    endTime Instant required,
+}
+
+relationship OneToMany {
+  Engineer{case} to SRCase{caseOwner(engMail)}
+}
+
+paginate SRCase, Engineer with infinite-scroll

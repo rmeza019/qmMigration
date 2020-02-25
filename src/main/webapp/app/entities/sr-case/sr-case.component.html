@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="qmMigrationApp.sRCase.home.title">SR Cases</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sr-case" [routerLink]="['/sr-case/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="qmMigrationApp.sRCase.home.createLabel">
+            Create a new SR Case
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="sRCases?.length === 0">
+        <span jhiTranslate="qmMigrationApp.sRCase.home.notFound">No sRCases found</span>
+    </div>
+    <div class="table-responsive" *ngIf="sRCases?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="srNumber"><span jhiTranslate="qmMigrationApp.sRCase.srNumber">Sr Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="severity"><span jhiTranslate="qmMigrationApp.sRCase.severity">Severity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="qmMigrationApp.sRCase.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="caseOwner.engMail"><span jhiTranslate="qmMigrationApp.sRCase.caseOwner">Case Owner</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let sRCase of sRCases ;trackBy: trackId">
+                <td><a [routerLink]="['/sr-case', sRCase.id, 'view' ]">{{sRCase.id}}</a></td>
+                <td>{{sRCase.srNumber}}</td>
+                <td>{{sRCase.severity}}</td>
+                <td>{{sRCase.type}}</td>
+                <td>
+                    <div *ngIf="sRCase.caseOwner">
+                        <a [routerLink]="['/engineer', sRCase.caseOwner?.id, 'view' ]" >{{sRCase.caseOwner?.engMail}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/sr-case', sRCase.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/sr-case', sRCase.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(sRCase)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

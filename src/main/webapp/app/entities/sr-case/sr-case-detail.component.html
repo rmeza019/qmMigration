@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sRCase">
+            <h2><span jhiTranslate="qmMigrationApp.sRCase.detail.title">SR Case</span> {{sRCase.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="qmMigrationApp.sRCase.srNumber">Sr Number</span></dt>
+                <dd>
+                    <span>{{sRCase.srNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="qmMigrationApp.sRCase.severity">Severity</span></dt>
+                <dd>
+                    <span>{{sRCase.severity}}</span>
+                </dd>
+                <dt><span jhiTranslate="qmMigrationApp.sRCase.type">Type</span></dt>
+                <dd>
+                    <span>{{sRCase.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="qmMigrationApp.sRCase.caseOwner">Case Owner</span></dt>
+                <dd>
+                    <div *ngIf="sRCase.caseOwner">
+                        <a [routerLink]="['/engineer', sRCase.caseOwner?.id, 'view']">{{sRCase.caseOwner?.engMail}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sr-case', sRCase.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

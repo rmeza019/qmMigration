@@ -1,0 +1,48 @@
+{
+    "name": "SRCase",
+    "fields": [
+        {
+            "fieldName": "srNumber",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "severity",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "engineer",
+            "otherEntityRelationshipName": "case",
+            "relationshipName": "caseOwner",
+            "otherEntityField": "engMail"
+        }
+    ],
+    "changelogDate": "20200225212318",
+    "entityTableName": "sr_case",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,25 @@
+{
+  "qmMigrationApp": {
+    "engineer": {
+      "home": {
+        "title": "Engineers",
+        "createLabel": "Create a new Engineer",
+        "createOrEditLabel": "Create or edit a Engineer",
+        "notFound": "No Engineers found"
+      },
+      "created": "A new Engineer is created with identifier {{ param }}",
+      "updated": "A Engineer is updated with identifier {{ param }}",
+      "deleted": "A Engineer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Engineer {{ id }}?"
+      },
+      "detail": {
+        "title": "Engineer"
+      },
+      "engMail": "Eng Mail",
+      "engName": "Eng Name",
+      "engLastName": "Eng Last Name",
+      "case": "Case"
+    }
+  }
+}
