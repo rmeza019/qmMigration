@@ -1,0 +1,25 @@
+{
+  "qmMigrationApp": {
+    "sRCase": {
+      "home": {
+        "title": "SR Cases",
+        "createLabel": "Crear nuevo SR Case",
+        "createOrEditLabel": "Crear o editar SR Case",
+        "notFound": "Ningún SR Cases encontrado"
+      },
+      "created": "Un nuevo SR Case ha sido creado con el identificador {{ param }}",
+      "updated": "Un SR Case ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un SR Case ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar SR Case {{ id }}?"
+      },
+      "detail": {
+        "title": "SR Case"
+      },
+      "srNumber": "Sr Number",
+      "severity": "Severity",
+      "type": "Type",
+      "caseOwner": "Case Owner"
+    }
+  }
+}

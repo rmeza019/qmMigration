@@ -1,0 +1,44 @@
+{
+    "name": "Engineer",
+    "fields": [
+        {
+            "fieldName": "engMail",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "engName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "engLastName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "sRCase",
+            "otherEntityRelationshipName": "caseOwner",
+            "relationshipName": "case"
+        }
+    ],
+    "changelogDate": "20200225212319",
+    "entityTableName": "engineer",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
